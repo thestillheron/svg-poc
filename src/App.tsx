@@ -3,11 +3,11 @@ import "./App.css";
 import { Menu, MenuSelection, menuOptions } from "./Menu";
 
 function App() {
-  const [selection, setSelection] = useState<MenuSelection>("Parallel Lines");
+  const [selection, setSelection] = useState<MenuSelection>("1. Parallel Lines");
   return (
     <div className="w-full h-full text-white">
       <Menu selection={selection} setSelection={setSelection} />
-      {menuOptions.find((option) => option.title === selection)?.render()}
+      {menuOptions[selection]()}
     </div>
   );
 }

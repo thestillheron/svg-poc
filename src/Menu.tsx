@@ -1,18 +1,13 @@
 import React from "react";
 import { ParallelLines } from "./Exercises/ParallelLines";
+import { LinesWithNodes } from "./Exercises/LinesWithNodes";
 
-export type MenuSelection = "Parallel Lines";
-export interface MenuOption {
-  title: MenuSelection;
-  render: () => React.ReactNode;
-}
+export type MenuSelection = keyof typeof menuOptions;
 
-export const menuOptions: MenuOption[] = [
-  {
-    title: "Parallel Lines",
-    render: () => <ParallelLines />,
-  },
-];
+export const menuOptions = {
+  "1. Parallel Lines": (): React.ReactNode => <ParallelLines />,
+  "2. Lines With Nodes": (): React.ReactNode => <LinesWithNodes />,
+} as const;
 
 interface Props {
   selection: MenuSelection;
@@ -26,9 +21,9 @@ export const Menu: React.FC<Props> = ({ selection, setSelection }) => {
         onChange={(e) => setSelection(e.target.value as MenuSelection)}
         value={selection}
       >
-        {menuOptions.map((option) => (
-          <option key={option.title} value={option.title}>
-            {option.title}
+        {Object.keys(menuOptions).sort().map((option) => (
+          <option key={option} value={option}>
+            {option}
           </option>
         ))}
       </select>
