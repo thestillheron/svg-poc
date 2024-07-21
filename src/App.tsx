@@ -1,15 +1,20 @@
-import { useState } from "react";
 import "./App.css";
-import { Menu, MenuSelection, menuOptions } from "./Menu";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Exercises } from "./Exercises/Exercises";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Exercises />,
+  },
+  {
+    path: "/callback",
+    element: <div>This is the callback</div>,
+  },
+]);
 
 function App() {
-  const [selection, setSelection] = useState<MenuSelection>("1. Parallel Lines");
-  return (
-    <div className="w-full h-full text-white">
-      <Menu selection={selection} setSelection={setSelection} />
-      {menuOptions[selection]()}
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
