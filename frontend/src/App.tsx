@@ -1,6 +1,7 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Exercises } from "./Exercises/Exercises";
+import { AuthCallback } from "./AuthCallback";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +10,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/callback",
-    element: <div>This is the callback</div>,
+    element: <AuthCallback />,
   },
 ]);
 

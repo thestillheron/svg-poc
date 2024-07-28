@@ -11,7 +11,7 @@ interface Branch {
 /**
  * Shows two parallel lines exactly one third of the screen apart.
  */
-export const LinesWithNodes = () => {
+export const LiveData = () => {
   const [numLines, setNumLines] = useState(2);
   const [numNodesPerLine, setNum] = useState(2);
 
