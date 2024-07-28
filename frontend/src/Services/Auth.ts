@@ -16,17 +16,14 @@ export const exchangeCode = async () => {
   if (!code) {
     throw new Error("No code found in URL");
   }
-  console.log(code);
 
-  const request = new Request("https://auth.atlassian.com/oauth/token", {
+  const request = new Request("http://localhost:3001/tokens", {
     method: "POST",
     body: JSON.stringify({
-      grant_type: "authorization_code",
-      client_id: clientId,
       code,
     }),
   });
-  request.headers.append("Content-Type", "application/json");
+  request.headers.set("Content-Type", "application/json");
 
   let result: any;
   try {
